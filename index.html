@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>Марафет & Умные волосы | Студия-Школа в Перми</title>
+    <meta name="description" content="Студия-школа Марафет в Перми. Наращивание волос, биовыпрямление, системы замещения. Обучение. ул. Мира, 20.">
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== ЦВЕТОВЫЕ ТОКЕНЫ ===== */
+        :root {
+            --bg-black: #050505;
+            --bg-card: rgba(15, 15, 15, 0.7);
+            --color-pink: #EBC4C8; 
+            --color-gold: #F5C647; 
+            --color-bordo: #8B1C3F; 
+            --text-white: #FFFFFF;
+            --text-gray: #A3A3A3;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        /* ===== БАЗА ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; position: relative; z-index: 2; }
+
+        /* ===== ОБЕРТКА ===== */
+        .section-content {
+            border-radius: 20px;
+            padding: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .wrap-dark {
+            background: rgba(15, 15, 15, 0.9); 
+        }
+        
+        .wrap-gradient {
+            background: linear-gradient(135deg, rgba(139, 28, 63, 0.8) 0%, rgba(5, 5, 5, 0.9) 80%); 
+        }
+
+        /* ===== ТИПОГРАФИКА ===== */
+        h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 24px; font-weight: 400; line-height: 1.1; }
+        .script-text { font-family: var(--font-script); font-size: clamp(3rem, 5vw, 4.5rem); color: var(--text-white); margin-bottom: -10px; display: block; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header .script-text { color: var(--color-pink); font-size: 3rem; }
+
+        /* ===== КНОПКИ ===== */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 32px; font-family: var(--font-sans); font-size: 0.85rem;
+            font-weight: 500; text-decoration: none; border-radius: 50px; 
+            transition: all 0.3s ease; cursor: pointer; border: none; text-transform: uppercase;
+        }
+        .btn-gold { background-color: var(--color-gold); color: var(--bg-black); border: 1px solid var(--color-gold); }
+        .btn-gold:hover { background-color: transparent; color: var(--color-gold); }
+        .btn-outline { background-color: transparent; color: var(--text-white); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .btn-outline:hover { border-color: var(--color-pink); color: var(--color-pink); }
+
+        /* ===== ХЕДЕР ===== */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; 
+            padding: 20px 0; z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--text-white); }
+        .logo-top { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--text-gray); }
+        .logo-main { font-family: var(--font-serif); font-size: 2rem; letter-spacing: 0.1em; line-height: 1; }
+        .logo-bottom { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--color-gold); font-weight: 600; }
+        
+        .nav { display: flex; gap: 30px; }
+        .nav a { color: var(--text-white); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .nav a:hover { color: var(--color-gold); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between; 
+            padding: 150px 0 40px;
+            z-index: 1;
+            background: transparent;
+        }
+
+        .hero-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: 0;
+            background: linear-gradient(90deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0.2) 100%);
+            pointer-events: none;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right top;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: -1;
+        }
+
+        .hero-inner { display: flex; flex-direction: column; height: 100%; flex-grow: 1; position: relative; z-index: 2; }
+
+        .hero-top-line {
+            display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-gray);
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 40px;
+        }
+        .hero-top-line span:last-child { color: var(--text-white); }
+
+        .hero-center {
+            text-align: center; margin: auto 0; display: flex;
+            flex-direction: column; align-items: center;
+        }
+
+        .hero-center .script-text {
+            font-size: clamp(3.5rem, 8vw, 6rem); color: #FFFFFF;
+            margin-bottom: -15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-center h1 {
+            font-family: var(--font-sans); font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 500; letter-spacing: 0.05em; color: var(--color-pink);
+            line-height: 1; text-shadow: 2px 2px 20px rgba(0,0,0,0.9); margin-bottom: 30px;
+        }
+
+        .hero-bottom-line {
+            text-align: right; font-size: 1rem; color: var(--text-gray);
+            margin-top: auto; margin-bottom: 40px;
+        }
+
+        .hero-actions { display: flex; gap: 16px; justify-content: center; }
+
+        /* ===== КАТЕГОРИИ (БОЛЬШИЕ КАРТИНКИ) ===== */
+        .categories-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 24px; 
+        }
+        .category-card {
+            background: var(--bg-card); 
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s, border-color 0.3s;
+            overflow: hidden;
+            min-height: 300px; 
+        }
+        .category-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--color-pink); 
+        }
+        
+        .category-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0; 
+        }
+        
+        .category-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        /* ===== УСЛУГИ (КАРТОЧКИ) ===== */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 24px; 
+        }
+        .service-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-pink);
+        }
+        
+        .service-img {
+            height: 250px;
+            background-color: #1A1A1A;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .service-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+        }
+
+        .service-content {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .service-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--color-pink);
+        }
+        
+        .service-list {
+            list-style: none;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+        
+        .service-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+        
+        .service-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .service-card .btn {
+            width: 100%;
+            padding: 14px;
+        }
+
+        /* ===== ОБУЧЕНИЕ ===== */
+        .accordion-container { max-width: 800px; margin: 0 auto; }
+        details {
+            background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: border-color 0.3s;
+        }
+        details[open] { border-color: var(--color-pink); }
+        summary {
+            padding: 24px 32px; font-family: var(--font-serif); font-size: 1.3rem;
+            cursor: pointer; list-style: none; display: flex; justify-content: space-between;
+            align-items: center; transition: background-color 0.3s;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary:hover { background-color: rgba(255,255,255,0.05); }
+        summary::after {
+            content: '+'; font-family: var(--font-sans); font-size: 1.5rem;
+            color: var(--color-gold); transition: transform 0.3s;
+        }
+        details[open] summary::after { content: '−'; }
+
+        .details-content { padding: 0 32px 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .price-list { margin-top: 16px; }
+        .price-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .price-item:last-child { border-bottom: none; }
+        .price-name { font-size: 0.95rem; font-weight: 400; }
+        .price-desc { display: block; font-size: 0.75rem; color: var(--text-gray); margin-top: 4px; }
+        .price-value { font-weight: 600; color: var(--color-gold); white-space: nowrap; font-size: 1rem; }
+        .price-old { color: var(--text-gray); text-decoration: line-through; font-size: 0.85rem; margin-right: 8px; font-weight: 400;}
+
+        /* ===== ПОРТФОЛИО ===== */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .portfolio-item {
+            aspect-ratio: 3/4; 
+            background: rgba(0,0,0,0.4); 
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1); 
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-pink);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== ОТЗЫВЫ ===== */
+        .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .review-card {
+            background: rgba(0,0,0,0.4); padding: 32px; border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+        .review-author { font-weight: 600; }
+        .review-stars { color: var(--color-gold); letter-spacing: 2px; font-size: 0.9rem; }
+        .review-text { color: var(--text-gray); font-size: 0.95rem; font-style: italic; }
+
+        /* ===== КОНТАКТЫ ===== */
+        .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-item { margin-bottom: 32px; }
+        .contact-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; }
+        .contact-value { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-white); text-decoration: none; }
+        
+        .map-placeholder {
+            background: rgba(0,0,0,0.4); height: 100%; min-height: 300px; border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+            color: var(--text-gray);
+        }
+
+        /* ===== ФУТЕР ===== */
+        .footer { padding: 40px 0; text-align: center; color: var(--text-gray); font-size: 0.8rem; background: rgba(5, 5, 5, 0.9); position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 1024px) {
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .contacts-grid { grid-template-columns: 1fr; }
+            .section-content { padding: 40px; }
+        }
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .hero-top-line { flex-direction: column; gap: 5px; text-align: center; }
+            .hero-bottom-line { text-align: center; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; }
+            .services-grid { grid-template-columns: 1fr; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            summary { padding: 20px; font-size: 1.1rem; }
+            .details-content { padding: 0 20px 20px; }
+            
+            .hero-bg {
+                background: linear-gradient(180deg, rgba(5,5,5,0.5) 0%, rgba(5,5,5,0.9) 60%, rgba(5,5,5,1) 100%);
+            }
+            .section-content { padding: 24px; }
+            
+            .category-card { min-height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ФОН -->
+    <div class="hero-bg">
+        <img src="images/hero-bg.jpg" alt="Марафет">
+    </div>
+
+    <!-- ХЕДЕР -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-top">студия-школа</span>
+                <span class="logo-main">МАРАФЕТ</span>
+                <span class="logo-bottom">умные волосы</span>
+            </a>
+            <nav class="nav">
+                <a href="#services">Услуги</a>
+                <a href="#education">Обучение</a>
+                <a href="#portfolio">Работы</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a href="tel:+79120606142" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.8rem;">Позвонить</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-top-line">
+                <span>Обучение</span>
+                <span>Наращивание волос</span>
+                <span>БИОВЫПРЯМЛЕНИЕ ВОЛОС НАВСЕГДА С ВОССТАНОВЛЕНИЕМ</span>
+            </div>
+
+            <div class="hero-center">
+                <span class="script-text">Studio School</span>
+                <h1>MARAFET</h1>
+            </div>
+
+            <div class="hero-bottom-line">
+                <span>г. Пермь, ул. Мира, 20</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#services" class="btn btn-gold">Услуги и цены</a>
+                <a href="#education" class="btn btn-outline">Курсы обучения</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАТЕГОРИИ -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-content wrap-dark">
+                <div class="categories-grid">
+                    <a href="#services" class="category-card">
+                        <div class="category-icon">
+                            <img src="images/icon-services.png" alt="Услуги">
+                        </div>
+                    </a>
+                    <a href="#education" class="category-card">
+                        <div class="category-icon">
+                            <img src="images/icon-education.png" alt="Обучение">
+                        </div>
+                    </a>
+                    <a href="#portfolio" class="category-card">
+                        <div class="category-icon">
+                            <img src="images/icon-portfolio.png" alt="Работы">
+                        </div>
+                    </a>
+                    <a href="#reviews" class="category-card">
+                        <div class="category-icon">
+                            <img src="images/icon-reviews.png" alt="Отзывы">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-content wrap-gradient">
+                <div class="section-header">
+                    <span class="script-text">Прайс-лист</span>
+                    <h2>Наши <em>услуги</em></h2>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Карточка 1 -->
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('images/service-bio.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Бионаращивание волос</h3>
+                            <ul class="service-list">
+                                <li>Биоволосы - это японская разработка биопротеинового волокна</li>
+                                <li>Время наращивания 40-60 мин</li>
+                                <li>Ленту не видно при ветре</li>
+                                <li>Можно делать высокий хвост</li>
+                                <li>Комфортна в носке</li>
+                                <li>Быстро отрастают свои волосы</li>
+                            </ul>
+                            <a href="https://vk.ru/marafetss" target="_blank" class="btn btn-gold">Узнать цену</a>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 2 -->
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('images/service-natural.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Наращивание натуральных волос</h3>
+                            <p class="service-desc">Стоимость наращивания натуральных волос зависит от длины и загущения.</p>
+                            <a href="https://vk.ru/marafetss" target="_blank" class="btn btn-gold">Узнать цену</a>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 3 -->
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('images/service-system.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Система волос при алопеции</h3>
+                            <p class="service-desc">Система замещения не требует сбривания собственных волос. С ней Вы живете 24/7 с прической: спите, моетесь, занимаетесь спортом. При этом кожа головы дышит и промывается. Вид родных волос.</p>
+                            <a href="https://vk.ru/marafetss" target="_blank" class="btn btn-gold">Узнать цену</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБУЧЕНИЕ (ОБНОВЛЕНО) -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-content wrap-dark">
+                <div class="section-header">
+                    <span class="script-text">Обучение</span>
+                    <h2>Курс «Королевское наращивание»</h2>
+                </div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <!-- Заголовок и подзаголовок -->
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 16px; color: var(--color-pink);">
+                            БИОнаращивание волос<br>
+                            <span style="font-size: 1rem; color: var(--text-gray); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 400;">(не путать с ленточным!)</span>
+                        </h3>
+                        <p style="color: var(--text-white); font-size: 1.1rem;">На курсе вы научитесь создавать пластичные, мягкие и тонкие ленты, которые не распадаются и не чувствуются в волосах.</p>
+                    </div>
+
+                    <!-- Список программы -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; margin-bottom: 40px;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 24px; color: var(--color-gold);">На курсе вы узнаете:</h4>
+                        <ul class="service-list" style="margin-bottom: 0;">
+                            <li>как создавать пластичные, мягкие, тонкие ленты, которые не распадаются и не чувствуются в волосах</li>
+                            <li>какие инструменты нужны для работы</li>
+                            <li>где покупать материалы</li>
+                            <li>деление волос на зоны и золотые правила укладки</li>
+                            <li>когда нужна коррекция и как часто</li>
+                            <li>отработка на модели</li>
+                        </ul>
+                    </div>
+
+                    <!-- Сертификат и кнопка -->
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.2rem; margin-bottom: 24px; color: var(--text-white); font-weight: 500;">🎓 Выдача сертификата</p>
+                        <a href="https://vk.ru/marafetss" target="_blank" class="btn btn-gold">Записаться на курс</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОРТФОЛИО -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-content wrap-gradient">
+                <div class="section-header">
+                    <span class="script-text">Портфолио</span>
+                    <h2>Примеры <em>работ</em></h2>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="images/work-1.jpg" alt="Работа 1">
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/work-2.jpg" alt="Работа 2">
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/work-3.jpg" alt="Работа 3">
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="images/work-4.jpg" alt="Работа 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-content wrap-dark">
+                <div class="section-header">
+                    <span class="script-text">Мнения</span>
+                    <h2>Отзывы <em>клиентов</em></h2>
+                </div>
+                
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Городской житель</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <p class="review-text">«Результат наращивания просто восхитил! Очень рада, что обратилась именно сюда. Мастер — профессионал, всё сделала аккуратно и красиво».</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Елена Бушуева</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <p class="review-text">«Огромное спасибо за горячий приём и отличный результат! Понравился и сам процесс, и то, как в итоге выглядят волосы. Обязательно вернусь ещё».</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://2gis.ru/perm/firm/70000001089759616/tab/reviews" target="_blank" class="btn btn-outline">Читать все отзывы на 2ГИС</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="section-content wrap-gradient">
+                <div class="contacts-grid">
+                    <div class="contact-info">
+                        <h2>Контакты</h2>
+                        <div class="contact-item">
+                            <div class="contact-label">Адрес студии</div>
+                            <div class="contact-value">ул. Мира, 20</div>
+                            <div style="color: var(--text-gray); margin-top: 4px;">г. Пермь, ост. "Советской Армии"</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">Телефон</div>
+                            <a href="tel:+79120606142" class="contact-value">+7 (912) 060-61-42</a>
+                        </div>
+                        <a href="https://vk.ru/marafetss" target="_blank" class="btn btn-gold">Написать ВКонтакте</a>
+                    </div>
+                    
+                    <div class="map-placeholder">
+                        <span>Карта 2ГИС (загружается...)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Марафет & Умные волосы. ИП Васильева Елена Владимировна.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
